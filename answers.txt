@@ -1,0 +1,38 @@
+
+
+Q 1 
+
+To make a socket you use the following code
+TcpSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+Where the first parameter is the address family and the second parameter is the socket type.
+
+So if you want a TCP connection you would pass socket.SOCK_STREAM in the second parameter since 
+socket.SOCK_STREAM is telling the socket to have a TCP connection type.
+
+
+
+
+Q 2 
+
+the client socket does not have to bind to a fixed ip address and port, while 
+a server socket's needs to bind to a port/ip so its location is known.
+Also the client socket does not need to listen to socket it is sending to, while the 
+server must always listen to that socket.
+
+Q 3 
+
+This is done by setting the socket.SO_REUSEADDR flag.
+By giving a socket s s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+This tells the kernel to reuse that same socket during its TIME_WAIT state
+without having to wait for its default wait time.
+
+Q 4
+
+We get information about the clients ip address, port number, address family (ipv4, ipv6)
+and socket type (udp,tcp). All this information can be retrieved from printing conn and addr.
+
+Q 5
+
+recv() returns the empty byte object b", which is an indicator that the connection
+loop is terminated.
