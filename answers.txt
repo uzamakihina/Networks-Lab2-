@@ -10,14 +10,11 @@ Where the first parameter is the address family and the second parameter is the 
 So if you want a TCP connection you would pass socket.SOCK_STREAM in the second parameter since 
 socket.SOCK_STREAM is telling the socket to have a TCP connection type.
 
-
-
-
 Q 2 
 
 the client socket does not have to bind to a fixed ip address and port, while 
 a server socket's needs to bind to a port/ip so its location is known.
-Also the client socket does not need to listen to socket it is sending to, while the 
+Also the client socket does not need to constantly listen to it, while a 
 server must always listen to that socket.
 
 Q 3 
@@ -25,7 +22,7 @@ Q 3
 This is done by setting the socket.SO_REUSEADDR flag.
 By giving a socket s s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 This tells the kernel to reuse that same socket during its TIME_WAIT state
-without having to wait for its default wait time.
+without having to wait for its default wait time to finish.
 
 Q 4
 
@@ -36,3 +33,8 @@ Q 5
 
 recv() returns the empty byte object b", which is an indicator that the connection
 loop is terminated.
+
+
+
+
+Q 6 https://github.com/uzamakihina/Networks-Lab2-
